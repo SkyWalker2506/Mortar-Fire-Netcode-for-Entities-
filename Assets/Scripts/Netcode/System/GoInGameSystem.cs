@@ -8,7 +8,7 @@ using UnityEngine;
 namespace Netcode.System
 {
     [BurstCompile]
-    [WorldSystemFilter((WorldSystemFilterFlags.ClientSimulation | WorldSystemFilterFlags.ThinClientSimulation))]
+    [WorldSystemFilter(WorldSystemFilterFlags.ClientSimulation | WorldSystemFilterFlags.ThinClientSimulation)]
     public partial struct GoInGameClientSystem : ISystem 
     {
         [BurstCompile]
