@@ -6,7 +6,6 @@ namespace Netcode.ComponentData
     public struct MortarSpawner : IComponentData
     {
         public Entity MortarPrefab;
-        public TransformBlobArray MortarSpawnTransformData;
     }
     
 }

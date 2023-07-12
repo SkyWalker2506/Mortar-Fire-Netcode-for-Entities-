@@ -51,7 +51,7 @@ namespace Netcode.System
         [BurstCompile]
         public void OnUpdate(ref SystemState state)
         {
-            FixedString128Bytes worldName = state.WorldUnmanaged.Name;
+            //FixedString128Bytes worldName = state.WorldUnmanaged.Name;
             EntityCommandBuffer commandBuffer = new EntityCommandBuffer(Allocator.Temp);
             NetworkId.Update(ref state);
 
@@ -59,7 +59,7 @@ namespace Netcode.System
             {
                 commandBuffer.AddComponent<NetworkStreamInGame>(req.ValueRO.SourceConnection);
                 NetworkId networkId = NetworkId[req.ValueRO.SourceConnection];
-                Debug.Log(worldName + " connecting "+networkId.Value);
+              //  Debug.Log(worldName + " connecting "+networkId.Value);
                 commandBuffer.DestroyEntity(reqEntity);
             }
             
