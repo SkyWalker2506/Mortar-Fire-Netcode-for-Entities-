@@ -5,13 +5,13 @@ using Unity.Entities;
 using UnityEngine;
 using Hash128 = Unity.Entities.Hash128;
 
-namespace Netcode.Baker
+namespace Netcode.Authoring
 {
     public class MortarSpawnPointsAuthoring : MonoBehaviour
     {
         public Transform[] MortarSpawnTransforms;
         
-        public class MortarSpawnerBaker : Baker<MortarSpawnPointsAuthoring>
+        public class Baking : Baker<MortarSpawnPointsAuthoring>
         {
             public override void Bake(MortarSpawnPointsAuthoring authoring)
             {
