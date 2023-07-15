@@ -7,19 +7,20 @@ namespace Netcode.Baker
     
     namespace Netcode.Baker
     {
-        public class MortarSpawnerMono : MonoBehaviour
+        public class MortarSpawnerAuthoring : MonoBehaviour
         {
             public GameObject MortarPrefab;
         }
     
-        public class MortarSpawnerBaker : Baker<MortarSpawnerMono>
+        public class MortarSpawnerBaker : Baker<MortarSpawnerAuthoring>
         {
-            public override void Bake(MortarSpawnerMono authoring)
+            public override void Bake(MortarSpawnerAuthoring authoring)
             {
                 Entity mortarSpawnerEntity = GetEntity(TransformUsageFlags.None);
                 MortarSpawner mortarSpawner = new MortarSpawner
                 {
-                    
+                    MortarPrefab = GetEntity(authoring.MortarPrefab,TransformUsageFlags.Dynamic),
+                    DoCreateMortar = true
                 };
                 AddComponent(mortarSpawnerEntity, mortarSpawner);
             }

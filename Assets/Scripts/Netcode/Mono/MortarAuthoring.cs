@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Netcode.Baker
 {
-    public class MortarMono : MonoBehaviour
+    public class MortarAuthoring : MonoBehaviour
     {
         public float MoveSpeed;
         public float RotateSpeed;
@@ -13,9 +13,9 @@ namespace Netcode.Baker
         public float FireInterval;
     }
     
-    public class MortarBaker : Baker<MortarMono>
+    public class MortarBaker : Baker<MortarAuthoring>
     {
-        public override void Bake(MortarMono authoring)
+        public override void Bake(MortarAuthoring authoring)
         {
             Entity mortarEntity = GetEntity(TransformUsageFlags.Dynamic);
             Mortar mortar = new Mortar

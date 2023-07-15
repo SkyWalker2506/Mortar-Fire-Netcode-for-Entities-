@@ -169,3 +169,4 @@ MonoBehaviour:
   AimLimit:
     x: 30
     y: 70
+  FireInterval: 1
