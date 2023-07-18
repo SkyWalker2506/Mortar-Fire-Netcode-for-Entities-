@@ -9,7 +9,8 @@ namespace Netcode.Authoring
     {
         public float MoveSpeed;
         public float RotateSpeed;
-        public float2 AimLimit;
+        public float3 MinAim;
+        public float3 MaxAim;
         public float FireInterval;
         
         class Baking : Baker<MortarAuthoring>
@@ -21,7 +22,9 @@ namespace Netcode.Authoring
                 {
                     MoveSpeed = authoring.MoveSpeed,
                     RotateSpeed = authoring.RotateSpeed,
-                    AimLimit = authoring.AimLimit,
+                    MinAim = quaternion.Euler(authoring.MinAim),
+                    MaxAim = quaternion.Euler(authoring.MaxAim),
+                    CurrentAimStep = 0.5f,
                     FireInterval = authoring.FireInterval
                 };
                 AddComponent(mortarEntity, mortar);

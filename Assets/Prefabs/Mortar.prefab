@@ -26,7 +26,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1849499105987367758}
   m_LocalRotation: {x: 0.5, y: -0.5, z: 0.5, w: 0.5}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0.5, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -95,6 +95,7 @@ GameObject:
   - component: {fileID: 5320837570597329518}
   - component: {fileID: 1374394924354770518}
   - component: {fileID: 7555508898494195539}
+  - component: {fileID: 8514912293514699789}
   m_Layer: 0
   m_Name: Mortar
   m_TagString: Untagged
@@ -146,7 +147,7 @@ MonoBehaviour:
   SupportedGhostModes: 2
   OptimizationMode: 0
   Importance: 1
-  prefabId: 
+  prefabId: b419fb22e629f4304ae6c298c05095c1
   HasOwner: 1
   SupportAutoCommandTarget: 1
   TrackInterpolationDelay: 0
@@ -165,8 +166,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   MoveSpeed: 5
-  RotateSpeed: 5
-  AimLimit:
-    x: 30
-    y: 70
+  RotateSpeed: 1
+  MinAim:
+    x: 0
+    y: 0
+    z: 30
+  MaxAim:
+    x: 0
+    y: 0
+    z: 70
   FireInterval: 1
+--- !u!114 &8514912293514699789
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5470024470956922550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 75ecb60a68204a37a67298eedf26fc87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

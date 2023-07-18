@@ -2,7 +2,6 @@
 using Unity.Burst;
 using Unity.Collections;
 using Unity.Entities;
-using Unity.Mathematics;
 using Unity.NetCode;
 using Unity.Transforms;
 using UnityEngine;
@@ -68,13 +67,12 @@ namespace Netcode.System
             EntityCommandBuffer commandBuffer = new EntityCommandBuffer(Allocator.Temp);
             networkIdFromEntity.Update(ref state);
             ref var spawnPoints = ref SystemAPI.GetSingleton<MortarSpawnPoints>().Value.Value.Transforms;
-            foreach ((RefRO<ReceiveRpcCommandRequest> reqSrc,  Entity reqEntity) in SystemAPI.Query<RefRO<ReceiveRpcCommandRequest>>().WithAll<SpawnMortarRequest>().WithEntityAccess())
+            foreach ((RefRO<ReceiveRpcCommandRequest> reqSrc,  Entity reqEntity) in SystemAPI.Query<RefRO<ReceiveRpcCommandRequest>>()
+                        .WithAll<SpawnMortarRequest>().WithEntityAccess())
             {
                 var networkId = networkIdFromEntity[reqSrc.ValueRO.SourceConnection];
                 Entity mortar = commandBuffer.Instantiate(mortarPrefab);
                 
-                Debug.Log(spawnPoints.Length);
-                Debug.Log(spawnPoints[index].Position);
                 commandBuffer.SetComponent(mortar, new GhostOwner { NetworkId = networkId.Value});
                 commandBuffer.SetComponent(mortar,new LocalTransform
                 {
@@ -84,7 +82,7 @@ namespace Netcode.System
                 });
                 commandBuffer.AppendToBuffer(reqSrc.ValueRO.SourceConnection, new LinkedEntityGroup{Value = mortar});
                 commandBuffer.DestroyEntity(reqEntity);
-                index= (index+1)%spawnPoints.Length;
+                index = (index+1)%spawnPoints.Length;
             }
             commandBuffer.Playback(state.EntityManager);
 
